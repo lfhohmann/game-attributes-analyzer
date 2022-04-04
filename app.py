@@ -105,7 +105,28 @@ def comparator(df):
 
 
 def correlate(df):
-    df = df.corr()
+    attributes = st.multiselect(
+        "Attributes",
+        df.columns[2:],
+        [
+            "Bullets",
+            "Damage",
+            "Headshot Multiplier",
+            "Fire Rate",
+            "Armor Penetration",
+            "Tagging Power",
+            "Mobility",
+            "Bullet Range",
+            "Reserve Ammo",
+            "Magazine Size",
+            "Damage Falloff @ 500U",
+        ],
+        key="correlate_attributes",
+    )
+
+    # df = df.loc[df["Name"].isin(weapons)][["Name"] + attributes]
+
+    df = df[attributes].corr()
 
     fig = go.Figure()
 
