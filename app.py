@@ -156,7 +156,9 @@ def main():
     st.title(f"Table")
     df = AgGrid(df, editable=True, theme="dark")["data"]
 
-    st.markdown(f"[Google Sheet Source]({DATASET_URL})")
+    st.markdown(
+        f"[Google Sheet Source](https://docs.google.com/spreadsheets/d/{DATASET['id']})"
+    )
 
     st.title(f"Compare")
     comparator(df)
